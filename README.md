@@ -55,12 +55,6 @@ Las frases se seleccionan de forma aleatoria desde un fichero de texto.
 
 	python app.py
 
-##La aplicación estará disponible en:
-
-	http://127.0.0.1:5000
-
-	http://127.0.0.1:5000/frotar/3
-
 ##Ejecución mediante Docker (despliegue seguro)
 
 La aplicación puede ejecutarse dentro de un contenedor Docker, garantizando que
@@ -83,12 +77,11 @@ La aplicación estará disponible en:
 
 	http://127.0.0.1:5000/frotar/3
 
-##Estructura del proyecto
-.
-├── app.py           # Aplicación web Flask
-├── bayeta.py        # Lógica de generación de frases
-├── frases.txt       # Almacenamiento de frases
-├── requirements.txt # Dependencias del proyecto
-├── Dockerfile       # Imagen Docker multifase
-├── .dockerignore    # Exclusión de ficheros innecesarios
-└── README.md
+## Persistencia con MongoDB
+
+La aplicación utiliza MongoDB como sistema de almacenamiento de frases auspiciosas.
+MongoDB se ejecuta en un contenedor independiente y la aplicación se conecta a él
+a través de una red Docker compartida.
+
+El contenedor de MongoDB se identifica mediante su nombre (`mongo-bayeta`) en lugar
+de `localhost`, permitiendo la comunicación entre servicios.
