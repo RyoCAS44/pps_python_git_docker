@@ -1,37 +1,34 @@
 # La Bayeta de la Fortuna 🧽✨
 
 La Bayeta de la Fortuna es una aplicación web sencilla inspirada en las clásicas
-galletas de la fortuna y en las frases filosóficas que uno puede encontrar
-escritas en una servilleta de bar.
+galletas de la fortuna y en las frases que uno podría encontrar escritas en una
+servilleta de bar.
 
-Cada vez que el usuario accede a la aplicación, se mostrará un mensaje
-aleatorio de carácter irónico, motivacional o absurdo.
+El objetivo del proyecto es simular un desarrollo colaborativo moderno,
+utilizando Python, Git y Docker, garantizando un entorno de ejecución
+reproducible y consistente entre desarrollo y producción.
 
-## Objetivo del proyecto
+---
 
-Este proyecto se utiliza como ejercicio práctico para aprender a:
+## Funcionalidad
 
-- Controlar versiones del código con Git
-- Trabajar de forma colaborativa usando GitHub
-- Gestionar dependencias con Python y entornos virtuales (venv)
-- Garantizar la portabilidad y reproducibilidad del entorno mediante Docker
+La aplicación permite:
 
-## Tecnologías utilizadas
+- Acceder a una página principal que muestra el mensaje **“Hola, mundo”**
+- Obtener frases auspiciosas mediante el endpoint `/frotar/<n_frases>`
+- Devolver las frases en formato JSON
+- Ejecutarse tanto en local como en un contenedor Docker
 
-- Python
-- Git
-- Docker
+Las frases se seleccionan de forma aleatoria desde un fichero de texto.
 
-El proyecto irá evolucionando progresivamente, publicando distintas versiones
-conforme se añadan nuevas funcionalidades.
+---
 
-## Ejecución de la aplicación
-
-Para garantizar que la aplicación se ejecuta de forma aislada e independiente del sistema, se utiliza un entorno virtual de Python (`venv`).
+## Ejecución en entorno local (Python + venv)
 
 ### Requisitos
-- Python 3 instalado en el sistema
+- Python 3
 - Git
+
 
 ### Pasos de instalación y ejecución
 
@@ -57,3 +54,41 @@ Para garantizar que la aplicación se ejecuta de forma aislada e independiente d
 5. Ejecutar la aplicación:
 
 	python app.py
+
+##La aplicación estará disponible en:
+
+	http://127.0.0.1:5000
+
+	http://127.0.0.1:5000/frotar/3
+
+##Ejecución mediante Docker (despliegue seguro)
+
+La aplicación puede ejecutarse dentro de un contenedor Docker, garantizando que
+el entorno de ejecución sea idéntico en cualquier sistema.
+
+##Requisitos
+
+Docker
+
+Construcción de la imagen
+	docker build -t bayeta-fortuna .
+
+Ejecución del contenedor
+	docker run -p 5000:5000 bayeta-fortuna
+
+
+La aplicación estará disponible en:
+
+	http://127.0.0.1:5000
+
+	http://127.0.0.1:5000/frotar/3
+
+##Estructura del proyecto
+.
+├── app.py           # Aplicación web Flask
+├── bayeta.py        # Lógica de generación de frases
+├── frases.txt       # Almacenamiento de frases
+├── requirements.txt # Dependencias del proyecto
+├── Dockerfile       # Imagen Docker multifase
+├── .dockerignore    # Exclusión de ficheros innecesarios
+└── README.md
