@@ -31,3 +31,9 @@ def obtener_frases(n=1):
         return []
 
     return [random.choice(documentos)["texto"] for _ in range(n)]
+
+def insertar_frases(frases: list[str]) -> None:
+    collection = get_collection()
+    docs = [{"texto": frase} for frase in frases]
+    collection.insert_many(docs)
+
