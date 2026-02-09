@@ -1,0 +1,19 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo-bayeta
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+
+  bayeta:
+    build: .
+    container_name: bayeta-fortuna
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    restart: always
+
+volumes:
+  mongo_data:
