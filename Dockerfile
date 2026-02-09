@@ -18,7 +18,7 @@ WORKDIR /app
 COPY --from=builder /usr/local /usr/local
 
 # Copiamos el código de la aplicación
-COPY app.py bayeta.py frases.txt ./
+COPY app.py bayeta.py mongo_frases.py frases.txt ./
 
 EXPOSE 5000
 
